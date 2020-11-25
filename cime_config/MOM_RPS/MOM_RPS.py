@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 from collections import OrderedDict
 import os
 import abc
@@ -169,7 +169,7 @@ class MOM_RPS(object,):
         def _expand_val(val):
 
             if type(val) in [dict, OrderedDict]:
-                for key_, val_ in val.items():
+                for key_, val_ in list(val.items()):
                     val[key_] = _expand_val(val_)
             elif isinstance(val, list):
                 pass
@@ -184,7 +184,7 @@ class MOM_RPS(object,):
 
             if type(val) in [dict, OrderedDict]:
                 data_copy = val.copy() # a copy to iterate over while making changes in original dict
-                for key_, val_ in data_copy.items():
+                for key_, val_ in list(data_copy.items()):
                     val.pop(key_)
                     val[_expand_key(key_, val_)] = val_
             if has_expandable_var(key):
@@ -192,12 +192,12 @@ class MOM_RPS(object,):
             return key
 
         # Step 1: Expand values:
-        for key, val in self._data.items():
+        for key, val in list(self._data.items()):
             self._data[key] = _expand_val(val)
 
         # Step 2: Expand keys:
         data_copy = self._data.copy() # a copy to iterate over while making changes in original dict
-        for key, val in data_copy.items():
+        for key, val in list(data_copy.items()):
             self._data.pop(key)
             self._data[_expand_key(key, val)] = val
 
@@ -283,7 +283,7 @@ class MOM_RPS(object,):
 
         def _eval_formula_recursive(val):
             if type(val) in [dict, OrderedDict]:
-                for key_, val_ in val.items():
+                for key_, val_ in list(val.items()):
                     val[key_] = _eval_formula_recursive(val_)
             elif isinstance(val, list):
                 pass
@@ -296,7 +296,7 @@ class MOM_RPS(object,):
         _determine_value_recursive(self._data)
 
         # Step 2: Evaluate the formulas, if any:
-        for key, val in self._data.items():
+        for key, val in list(self._data.items()):
             self._data[key] = _eval_formula_recursive(val)
 
     def append(self, rps_obj):
@@ -305,7 +305,7 @@ class MOM_RPS(object,):
         """
 
         def update_recursive(old_dict,new_dict):
-            for key, val in new_dict.items():
+            for key, val in list(new_dict.items()):
                 if key in old_dict:
                     old_val = old_dict[key]
                     if type(val) in [dict, OrderedDict] and type(old_val) in [dict, OrderedDict]:

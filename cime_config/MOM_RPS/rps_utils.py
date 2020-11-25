@@ -1,6 +1,6 @@
 """Auxiliary functions to be used in MOM_RPS."""
 
-from __future__ import print_function
+
 from collections import OrderedDict
 import os
 import re
@@ -40,7 +40,7 @@ def get_str_type():
     """Returns the base string type, which depends on the major Python version."""
 
     try: # Python 2
-        str_type = basestring
+        str_type = str
     except NameError: # Python 3
         str_type = str
     return str_type
@@ -213,7 +213,7 @@ def search_nested_dict(nested_dict, key):
 
     vals = []
     def find_key_recursive(dict_obj):
-        for key_, val_ in dict_obj.items():
+        for key_, val_ in list(dict_obj.items()):
             if key_ == key:
                 vals.append(dict_obj[key_])
             if type(val_) in [dict, OrderedDict]:
