@@ -343,7 +343,9 @@
          "value": {
             "$OCN_GRID == \"gx1v6\"": true,
             "$OCN_GRID == \"tx0.66v1\"": true,
-            "$OCN_GRID == \"tx0.25v1\"": true
+            "$OCN_GRID == \"tx0.25v1\"": true,
+            "$OCN_GRID == \"Bering\"": true,
+            "$OCN_GRID == \"Arctic5\"": true
          }
       },
       "TEMP_SALT_Z_INIT_FILE": {
@@ -352,7 +354,9 @@
          "value": {
             "$OCN_GRID == \"gx1v6\"": "WOA05_pottemp_salt.nc",
             "$OCN_GRID == \"tx0.66v1\"": "woa18_04_initial_conditions.nc",
-            "$OCN_GRID == \"tx0.25v1\"": "MOM6_IC_TS.nc"
+            "$OCN_GRID == \"tx0.25v1\"": "MOM6_IC_TS.nc",
+            "$OCN_GRID == \"Bering\"": "MOM6_IC_TS.nc",
+            "$OCN_GRID == \"Arctic5\"": "MOM6_IC_TS.nc"
          }
       },
       "Z_INIT_FILE_PTEMP_VAR": {

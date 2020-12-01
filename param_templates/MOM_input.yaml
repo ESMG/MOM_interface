@@ -497,6 +497,8 @@ Global:
             $OCN_GRID == "gx1v6": True
             $OCN_GRID == "tx0.66v1": True
             $OCN_GRID == "tx0.25v1": True
+            $OCN_GRID == "Bering": True
+            $OCN_GRID == "Arctic5": True
     TEMP_SALT_Z_INIT_FILE:
         description: |
             "default = 'temp_salt_z.nc'
@@ -507,6 +509,8 @@ Global:
             $OCN_GRID == "gx1v6": "WOA05_pottemp_salt.nc"
             $OCN_GRID == "tx0.66v1": "woa18_04_initial_conditions.nc"
             $OCN_GRID == "tx0.25v1": "MOM6_IC_TS.nc"
+            $OCN_GRID == "Bering": "MOM6_IC_TS.nc"
+            $OCN_GRID == "Arctic5": "MOM6_IC_TS.nc"
     Z_INIT_FILE_PTEMP_VAR:
         description: |
             "default = 'ptemp'
